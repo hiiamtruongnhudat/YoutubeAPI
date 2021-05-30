@@ -3,6 +3,7 @@ import os,pickle,re,requests,pytchat
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
+import threading
 class YouTubeAPI(QThread):
     updateListWidget = pyqtSignal(str)
     def __init__(self,args, index=0):
@@ -61,10 +62,14 @@ class YouTubeAPI(QThread):
                 self.updateListWidget.emit(f"{c.datetime} [{c.author.name}]- {c.message}")
                 print(f"{c.datetime} [{c.author.name}]- {c.message}")
     def run(self):
+        self.listThread = []
         if self.index == 0:
             self.login()
         if self.index == 1:
             self.getMessageLivechat()
         if self.index == 2:
-            self.commentYoutube()
+            new_Thread = threading.Thread(target=self.commentYoutube, args=())
+            self.listThread.append(new_Thread)
+            for x in self.listThread:
+                x.start()
         self.exec_()

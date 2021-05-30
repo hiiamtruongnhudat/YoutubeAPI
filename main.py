@@ -26,16 +26,9 @@ class MyApp(QMainWindow):
     def commitComment(self):
         self.thread[3] = YouTubeAPI(self,index=2)
         self.thread[3].start()
-        self.ui.pushButton_4.setEnabled(False)
     def stop(self):
-        if self.thread[1].isRunning():
-            self.thread[1].terminate()
-            self.ui.pushButton.setEnabled(True)
         if self.thread[2].isRunning():
             self.thread[2].terminate()
-        if self.thread[3].isRunning():
-            self.thread[3].terminate()
-            self.ui.pushButton_4.setEnabled(True)
         self.ui.pushButton_2.setEnabled(True)
     def updateList(self,value):
         self.ui.listWidget.addItem(value)
