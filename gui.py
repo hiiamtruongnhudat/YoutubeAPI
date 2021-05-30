@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         item = self.listWidget_2.item(1)
         item.setText(_translate("MainWindow", "Đặng Quang Huy"))
         item = self.listWidget_2.item(2)
-        item.setText(_translate("MainWindow", "Mạnh Cường"))
+        item.setText(_translate("MainWindow", "Đinh Mạnh Cường"))
         item = self.listWidget_2.item(3)
         item.setText(_translate("MainWindow", "Nguyễn Công Đạo"))
         # item = self.listWidget_2.item(4)
