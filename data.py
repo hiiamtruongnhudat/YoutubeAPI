@@ -1,5 +1,5 @@
 from PyQt5.QtCore import pyqtSignal, QThread
-import os,pickle,re,requests,pytchat
+import os,pickle,re,requests,pytchat,time
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
@@ -54,6 +54,8 @@ class YouTubeAPI(QThread):
             }
         )
         response = request.execute()
+        time.sleep(1)
+        self.args.ui.lineEdit_3.setText('')
         # print(response)
     def getMessageLivechat(self):
         chat = pytchat.create(video_id=self.getIDVideo())
